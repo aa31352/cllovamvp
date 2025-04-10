@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | CLLOVA AI OS</title>
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #00aced;
+            --dark: #2c3e50;
+            --light-bg: #f8fafc;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            background: var(--light-bg);
+        }
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--dark);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            padding: 0 20px;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar li {
+            margin-bottom: 5px;
+        }
+        .sidebar a {
+            display: block;
+            color: #ddd;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        /* Help Sections */
+        .help-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .help-section.active {
+            display: block;
+        }
+        
+        /* Card Styling */
+        .help-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .help-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        /* Code Blocks */
+        pre {
+            background: #292d3e;
+            color: #a6accd;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+        /* Google-style Back Button */
+ .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-button svg {
+            width: 24px;
+            height: 24px;
+        }
+        .back-button:hover {
+            background: #f5f5f5;
+            transform: translateX(-3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+
+        .back-button {
+                top: 10px;
+                left: 10px;
+            }
+    </style>
+</head>
+<body>
+
+ <!-- Google-style Back Button -->
+ <a href="index.html" class="back-button" aria-label="Return to homepage">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="#6e48aa"/>
+    </svg>
+</a>
+   
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>Help Center</h2>
+        <ul>
+            <li><a href="#getting-started" class="active" onclick="showSection('getting-started')">Getting Started</a></li>
+            <li><a href="#troubleshooting" onclick="showSection('troubleshooting')">Troubleshooting</a></li>
+            <li><a href="#developer-resources" onclick="showSection('developer-resources')">Developer Resources</a></li>
+        </ul>
+    </div>
+    
+
+    <!-- Main Content -->
+    <div class="main-content"> 
+        <!-- Getting Started Section -->
+        <div id="getting-started" class="help-section active">
+            <h1>Getting Started with CLLOVA</h1>
+            
+            <div class="help-card">
+                <h3>Installation Guide</h3>
+                <p><strong>Step 1:</strong> Download the installer package</p>
+                <pre><code>wget https://downloads.cllova.ai/latest/installer.sh</code></pre>
+                
+                <p><strong>Step 2:</strong> Run with administrator privileges</p>
+                <pre><code>chmod +x installer.sh
+sudo ./installer.sh</code></pre>
+                
+                <p><strong>Step 3:</strong> Verify installation</p>
+                <pre><code>cllova --version  # Should return v2.1.0 or higher</code></pre>
+            </div>
+            
+            <div class="help-card">
+                <h3>First-Time Setup</h3>
+                <p>After installation, run the setup wizard:</p>
+                <pre><code>cllova setup</code></pre>
+                <p>You'll configure:</p>
+                <ul>
+                    <li>Default microphone</li>
+                    <li>Wake word sensitivity</li>
+                    <li>Network connections</li>
+                </ul>
+            </div>
+            
+            <div class="help-card">
+                <h3>Voice Training</h3>
+                <p>Improve accuracy by training CLLOVA to recognize your voice:</p>
+                <pre><code>cllova train-voice</code></pre>
+                <p>Follow the on-screen prompts to read 10 sample sentences. This takes about 3 minutes.</p>
+            </div>
+        </div>
+
+        <!-- Troubleshooting Section -->
+        <div id="troubleshooting" class="help-section">
+            <h1>Troubleshooting Common Issues</h1>
+            
+            <div class="help-card">
+                <h3>Microphone Not Working</h3>
+                <p><strong>Symptoms:</strong> CLLOVA doesn't respond to wake word or commands</p>
+                <p><strong>Solutions:</strong></p>
+                <ol>
+                    <li>Check hardware connections</li>
+                    <li>Verify microphone permissions:
+                        <pre><code>ls -l /dev/audio*  # Should show your mic device</code></pre>
+                    </li>
+                    <li>Test with system recorder:
+                        <pre><code>arecord -d 5 test.wav && aplay test.wav</code></pre>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="help-card">
+                <h3>Wi-Fi Connectivity Issues</h3>
+                <p><strong>Diagnostic commands:</strong></p>
+                <pre><code>cllova network-status  # Check connection state
+ping api.cllova.ai    # Test cloud connectivity</code></pre>
+                <p><strong>Reset network config:</strong></p>
+                <pre><code>sudo cllova-network --reset</code></pre>
+            </div>
+            
+            <div class="help-card">
+                <h3>System Crashes</h3>
+                <p>If CLLOVA crashes unexpectedly:</p>
+                <ol>
+                    <li>Check logs:
+                        <pre><code>journalctl -u cllova -n 50 --no-pager</code></pre>
+                    </li>
+                    <li>Submit crash report:
+                        <pre><code>cllova bug-report --upload</code></pre>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Developer Resources Section -->
+        <div id="developer-resources" class="help-section">
+            <h1>Developer Resources</h1>
+            
+            <div class="help-card">
+                <h3>API Documentation</h3>
+                <p>Access the full API reference:</p>
+                <pre><code># Local docs (after installation)
+cllova docs --web</code></pre>
+                <p>Or visit: <a href="api-reference.html" target="_blank">developer.cllova.ai/api</a></p>
+            </div>
+            
+            <div class="help-card">
+                <h3>Skill Development Kit</h3>
+                <p>Install the SDK:</p>
+                <pre><code>pip install cllova-sdk</code></pre>
+                <p>Sample skill template:</p>
+                <pre><code>from cllova.sdk import Skill
+
+class MySkill(Skill):
+    def initialize(self):
+        self.register_intent("greet", self.handle_greet)
+    
+    def handle_greet(self):
+        return {"response": "Hello from my skill!"}</code></pre>
+            </div>
+            
+            <div class="help-card">
+                <h3>Submit a Skill</h3>
+                <p>Package your skill:</p>
+                <pre><code>cllova-skill pack ./my_skill</code></pre>
+                <p>Submit to the marketplace:</p>
+                <pre><code>cllova marketplace submit my_skill.zip</code></pre>
+                <p>Review process takes 1-3 business days.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show the selected section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.help-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('.sidebar a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Optional: Handle URL hashes on page load
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                showSection(sectionId);
+            }
+        });
+    </script>
+</body>
+</html>

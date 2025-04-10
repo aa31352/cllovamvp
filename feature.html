@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clova AI OS - The Future of AI-Powered Operating Systems</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #111;
+                z-index: 99;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                padding: 10px;
+            }
+
+            .hamburger {
+                display: block !important;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+ <!-- Navigation -->
+    <!-- Navigation Bar -->
+    <nav style="display: flex; align-items: center; justify-content: space-between; position: relative; padding: 10px;">
+        <div class="logo">
+            <h1 class="ai-logo">
+                <span class="clova"></span> 
+                <span class="ai"></span>
+              </h1>
+              
+              <style>
+               .ai-logo {
+  font-family: 'Space Grotesk', sans-serif; /* Techy but readable */
+  font-weight: 700;
+  font-size: 2.3rem;
+  color: #000;
+  position: relative;
+}
+
+.ai-logo::after {
+  content: "CLLOVA";
+  background: linear-gradient(90deg, #FF3E9D, #0E1F5C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+
+
+              </style>
+             
+        </div>
+        <ul class="nav-links" id="nav-menu" style="display: flex; list-style: none; margin: 0; padding: 0;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="feature.html">Features</a></li>
+            <li><a href="demo.html">Demo</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger-menu" style="display: none; font-size: 1.5rem;">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="feature-hero">
+        <div class="container">
+            <h1>Not Just an OS. <span>An AI Ecosystem.</span></h1>
+            <p>Clova redefines computing with AI-native workflows, self-learning agents, and real-time system intelligence.</p>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="core-features">
+        <div class="container">
+            <h2>Core <span>Innovations</span></h2>
+            <div class="feature-grid">
+                <!-- AI Agent Store -->
+                <div class="feature-card interactive-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>AI Agent Store</h3>
+                    <p>Try installing an AI agent:</p>
+                    <div class="agent-store-demo">
+                        <div class="agent-cards">
+                            <div class="agent-card" data-agent="code-assistant">
+                                <i class="fas fa-code"></i>
+                                <h4>Code Assistant</h4>
+                                <button class="install-btn">Install</button>
+                            </div>
+                            <div class="agent-card" data-agent="design-bot">
+                                <i class="fas fa-paint-brush"></i>
+                                <h4>Design Bot</h4>
+                                <button class="install-btn">Install</button>
+                            </div>
+                        </div>
+                        <div class="agent-terminal" id="agent-terminal">
+                            <div class="terminal-output" id="terminal-output">
+                                > Welcome to Clova Agent Store. Run <span class="command">clova install [agent]</span> to begin.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autonomous Messaging -->
+                <div class="feature-card interactive-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Autonomous Messaging</h3>
+                    <p>Clova drafts responses and asks for confirmation:</p>
+                    <div class="messaging-demo">
+                        <div class="message received">
+                            <p>Hey, can we reschedule the meeting to tomorrow?</p>
+                        </div>
+                        <div class="message drafted">
+                            <p>"Sure, how about 11 AM?" <span class="approve-btn">✓ Approve</span><span class="edit-btn">✎ Edit</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI-Optimized Dashboard -->
+                <div class="feature-card interactive-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>AI-Optimized Dashboard</h3>
+                    <div class="dashboard-demo">
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-label">GPU</div>
+                                <div class="stat-bar gpu" data-value="65"></div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">RAM</div>
+                                <div class="stat-bar ram" data-value="42"></div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">Storage</div>
+                                <div class="stat-bar storage" data-value="78"></div>
+                            </div>
+                        </div>
+                        <div class="ai-suggestion">
+                            <p><i class="fas fa-lightbulb"></i> <strong>AI Tip:</strong> Clear 5.2GB of temporary files.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Command Demo -->
+    <section class="voice-demo">
+        <div class="container">
+            <h2>Natural Language <span>Commands</span></h2>
+            <div class="voice-container">
+                <div class="voice-prompt">
+                    <i class="fas fa-microphone"></i>
+                    <p>"Clova, increase GPU allocation for Blender and mute Slack notifications."</p>
+                </div>
+                <div class="voice-response">
+                    <div class="response-bubble">
+                        <p>Done. Allocated 80% GPU to Blender. Slack muted for 2 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- USP Section -->
+<section class="usp">
+    <div class="container">
+        <h2>Forget <span class="strikethrough">Windows/macOS/Linux</span>. <br>Welcome to <span class="clova-pulse">Clova AI OS</span>.</h2>
+        <div class="comparison">
+            <!-- Left Column: Traditional OS Problems -->
+            <div class="os-problems">
+                <div class="problem-card" data-tilt>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Legacy OS Limitations</h3>
+                    <ul>
+                        <li>❌ Manual updates & driver hell</li>
+                        <li>❌ Static interfaces from the 2000s</li>
+                        <li>❌ Zero AI integration</li>
+                        <li>❌ One-size-fits-all approach</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            
+            <!-- Right Column: Clova Solutions -->
+            <div class="clova-solutions">
+                <div class="solution-card" data-tilt data-tilt-scale="1.05">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Clova AI Advantages</h3>
+                    <ul>
+                        <li>✅ <strong>Self-healing:</strong> Fixes issues automatically</li>
+                        <li>✅ <strong>Conversational UI:</strong> "Clova, optimize my PC"</li>
+                        <li>✅ <strong>Agent Ecosystem:</strong> 50+ AI assistants pre-loaded</li>
+                        <li>✅ <strong>Personalized:</strong> Learns your workflow</li>
+                    </ul>
+                    <div class="cta-glowing">
+                        <button onclick="location.href='demo.html'">See the Future →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    /* USP Section Styling */
+    .usp {
+        padding: 4rem 0;
+        background: radial-gradient(circle at center, #f8f9fa 0%, #e9ecef 100%);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .usp::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ff6b6b, #6b6bff, #6bff6b);
+    }
+    
+    .title-wrapper {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+    }
+    
+    .fancy-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #333, #666);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+        padding: 0 1rem;
+    }
+    
+    .focus-text {
+        display: inline-block;
+        animation: pulse 2s infinite;
+    }
+    
+    .strikethrough {
+        position: relative;
+        display: inline-block;
+        margin: 0 0.5rem;
+    }
+    
+    .strikethrough::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #ff6b6b;
+        transform: translateY(-50%) rotate(-5deg);
+        transform-origin: center;
+    }
+    
+    .flicker {
+        animation: flicker 4s infinite alternate;
+    }
+    
+    .welcome-text {
+        margin-top: 1rem;
+        font-size: 2rem;
+        position: relative;
+    }
+    
+    .clova-pulse {
+        color: #6b6bff;
+        animation: pulse 1.5s infinite alternate;
+    }
+    
+    .comparison {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 2rem;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+    
+    .os-problems, 
+    .clova-solutions {
+        flex: 1;
+        min-width: 300px;
+        max-width: 450px;
+    }
+    
+    .problem-card, 
+    .solution-card {
+        height: 100%;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .problem-card {
+        background: #fff;
+        border: 1px solid #eee;
+    }
+    
+    .problem-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .solution-card {
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        color: white;
+    }
+    
+    .solution-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(107, 107, 255, 0.2);
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .problem-icon {
+        color: #ff6b6b;
+    }
+    
+    .solution-icon {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+    
+    .vs-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .vs-circle span {
+        background: linear-gradient(135deg, #ff6b6b, #6b6bff);
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        z-index: 2;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+    }
+    
+    li {
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 2rem;
+    }
+    
+    .icon {
+        position: absolute;
+        left: 0;
+    }
+    
+    .cta-glowing {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .cta-glowing button {
+        background: white;
+        color: #6b6bff;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(107, 107, 255, 0.5);
+    }
+    
+    .cta-glowing button:hover {
+        background: #6b6bff;
+        color: white;
+        box-shadow: 0 0 25px rgba(107, 107, 255, 0.8);
+        transform: translateY(-2px);
+    }
+    
+    .corner-ribbon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.5rem 1.5rem;
+        background: #333;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border-bottom-left-radius: 20px;
+    }
+    
+    .problem-card .corner-ribbon {
+        background: #ff6b6b;
+    }
+    
+    .solution-card .corner-ribbon {
+        background: #6bff6b;
+        color: #333;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(1.05); opacity: 0.8; }
+    }
+    
+    @keyframes flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+            opacity: 1;
+        }
+        20%, 22%, 24%, 55% {
+            opacity: 0.5;
+        }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .comparison {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .os-problems, 
+        .clova-solutions {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .vs-circle {
+            margin: 2rem 0;
+            transform: rotate(90deg);
+        }
+        
+        .fancy-title {
+            font-size: 2rem;
+        }
+        
+        .welcome-text {
+            font-size: 1.5rem;
+        }
+    }
+    
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #111;
+                z-index: 99;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                padding: 10px;
+            }
+
+            .hamburger {
+                display: block !important;
+                cursor: pointer;
+            }
+        }
+    
+</style>
+
+  
+
+       <!-- Footer -->
+       <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/images/Untitled_design__4_-removebg-preview.png" width="200px" height="150px" alt="Clova AI OS">
+                <span></span>
+            </div>
+            <!--footter new -->
+            <div style="background-color:#6e48aa ; padding: 20px; color: white; font-family: Arial, sans-serif;">
+                <h3 style="margin-bottom: 10px;">Quick Links</h3>
+                <ul style="list-style: none; padding: 0; display: flex; gap: 15px; flex-wrap: wrap;">
+                  <li>
+                    <a href="privacypolicy.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="help-center.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Help Center</a>
+                  </li>
+                  <li>
+                    <a href="documentation.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Documentation</a>
+                  </li>
+                  <li>
+                    <a href="blogs.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Blogs</a>
+                  </li>
+                </ul>
+              
+                <script>
+                  function highlightLink(link) {
+                    link.style.color = "#00aced";
+                    link.style.textDecoration = "underline";
+                  }
+                  function resetLink(link) {
+                    link.style.color = "#aaa";
+                    link.style.textDecoration = "none";
+                  }
+                </script>
+              </div>
+        </div>
+
+
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div></div><br>
+        <p>&copy; 2025 Clova AI OS. All rights reserved.</p>
+    </div>
+    </footer>
+
+    <!-- Menu toggle script -->
+    <script>
+        document.getElementById("hamburger-menu").addEventListener("click", function () {
+            var navMenu = document.getElementById("nav-menu");
+            if (navMenu.style.display === "flex") {
+                navMenu.style.display = "none";
+            } else {
+                navMenu.style.display = "flex";
+                if (window.innerWidth <= 768) {
+                    navMenu.style.flexDirection = "column";
+                }
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>

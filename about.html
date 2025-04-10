@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Clova AI OS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern AI-themed styling with animations */
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --dark: #1a1a2e;
+            --light: #f5f5f7;
+            --text: #333;
+            --bg: #ffffff;
+            --card-bg: #f8f9fa;
+        }
+
+        [data-theme="dark"] {
+            --primary: #9d50bb;
+            --secondary: #6e48aa;
+            --dark: #121212;
+            --light: #e0e0e0;
+            --text: #f5f5f5;
+            --bg: #1a1a2e;
+            --card-bg: #16213e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: var(--bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content:end;
+            text-align: right;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                z-index: 998;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+                opacity: 0;
+                transition: opacity 0.3s ease 0.1s;
+            }
+
+            .nav-links.active li {
+                opacity: 1;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 999;
+            }
+
+            /* Menu overlay background */
+            .mobile-menu-backdrop {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                backdrop-filter: blur(5px);
+                z-index: 997;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s, visibility 0.3s;
+            }
+
+            .mobile-menu-backdrop.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+          /* About Us Hero */
+          .about-hero {
+            padding: 12rem 5% 5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .mission-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .mission-section h2 span {
+            color: var(--primary);
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mission-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 5rem 5%;
+            background: var(--card-bg);
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background: var(--bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .member-info p {
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .timeline-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        .timeline-date {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .timeline-content {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 5rem 5%;
+            background: var(--card-bg);
+            text-align: center;
+        }
+
+        .values-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--primary);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            max-width: 1200px;
+            margin: 0 auto 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        
+        /* Quick Links */
+        .quick-links-container {
+            background-color: #6e48aa;
+            padding: 20px;
+            color: white;
+            font-family: Arial, sans-serif;
+            width: 100%;
+        }
+        
+        .quick-links-container h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .quick-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        
+        .quick-links li {
+            flex: 1 0 auto;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .quick-links a {
+            color: #aaa;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        .quick-links a:hover {
+            color: #00aced;
+            text-decoration: underline;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+                z-index: 999;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+        
+            .nav-links.active {
+                left: 0;
+            }
+        
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+        
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+        
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 998;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s, visibility 0.3s;
+            }
+        
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .video-container h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .ai-logo {
+                font-size: 1.8rem;
+            }
+            
+            .video-demo {
+                padding: 2rem 1rem;
+            }
+            
+            .video-container h2 {
+                font-size: 1.8rem;
+            }
+            
+            .quick-links li {
+                min-width: 100%;
+            }
+        }
+        
+        /* Utility Classes */
+        .no-scroll {
+            overflow: hidden;
+        }
+    
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .ai-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2.3rem;
+            color: #000;
+            position: relative;
+        }
+        
+        .ai-logo::after {
+            content: "CLLOVA";
+            background: linear-gradient(90deg, #FF3E9D, #0E1F5C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-left: 8px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #6e48aa;
+        }
+        
+        .nav-links a.active {
+            color: #6e48aa;
+            font-weight: bold;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Video Demo Section */
+        .video-demo {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .video-container {
+            text-align: center;
+        }
+        
+        .video-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .video-container h2 span {
+            color: #6e48aa;
+        }
+        
+        .video-container video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-caption {
+            margin-top: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .video-caption p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #6e48aa, #9c50e6);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: #6e48aa;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #9c50e6;
+        }
+        
+        footer p {
+            color: #666;
+            margin-top: 1rem;
+        }
+        
+        /* Quick Links */
+        .quick-links-container {
+            background-color: #6e48aa;
+            padding: 20px;
+            color: white;
+            font-family: Arial, sans-serif;
+            width: 100%;
+        }
+        
+        .quick-links-container h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .quick-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        
+        .quick-links li {
+            flex: 1 0 auto;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .quick-links a {
+            color: #aaa;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        .quick-links a:hover {
+            color: #00aced;
+            text-decoration: underline;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+                z-index: 999;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+        
+            .nav-links.active {
+                left: 0;
+            }
+        
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+        
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+        
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 998;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s, visibility 0.3s;
+            }
+        
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .video-container h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .ai-logo {
+                font-size: 1.8rem;
+            }
+            
+            .video-demo {
+                padding: 2rem 1rem;
+            }
+            
+            .video-container h2 {
+                font-size: 1.8rem;
+            }
+            
+            .quick-links li {
+                min-width: 100%;
+            }
+        }
+        
+        /* Utility Classes */
+        .no-scroll {
+            overflow: hidden;
+        }
+    
+    </style>
+</head>
+<body>
+   <!-- Navigation Bar -->
+   <nav>
+    <div class="logo">
+        <a href="index.html" style="text-decoration: none;">  <!-- Added anchor tag -->
+            <h1 class="ai-logo">
+                <span class="clova"></span> 
+                <span class="ai"></span>
+            </h1>
+        </a>
+        
+        <style>
+            .ai-logo {
+                font-family: 'Space Grotesk', sans-serif;
+                font-weight: 700;
+                font-size: 2.3rem;
+                color: #000;
+                position: relative;
+                display: inline-block; /* Added to ensure proper hover area */
+            }
+    
+            .ai-logo::after {
+                content: "CLLOVA";
+                background: linear-gradient(90deg, #FF3E9D, #0E1F5C);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                margin-left: 8px;
+                font-weight: bold;
+            }
+    
+            /* Optional: Add hover effect */
+            .logo a:hover .ai-logo {
+                opacity: 0.9;
+                transform: scale(1.02);
+                transition: all 0.2s ease;
+            }
+        </style>
+    </div>
+          </style>
+
+        </div>
+        <div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="demo.html">Demo</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="mobile-menu-backdrop"></div>
+</nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <h1>About Clova AI OS</h1>
+        <p>We're redefining the future of operating systems with artificial intelligence at the core of every interaction.</p>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <h2>Our <span>Mission</span></h2>
+        <div class="mission-content">
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Transform Computing</h3>
+                <p>Create an OS that learns and adapts to users, eliminating the need for complex configurations and manual optimizations.</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Privacy First</h3>
+                <p>Develop technology that protects user data by default, with local AI processing and transparent algorithms.</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Democratize AI</h3>
+                <p>Make advanced AI tools accessible to everyone, regardless of technical expertise or hardware capabilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2>Meet <span>The Team</span></h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Alex Chen" class="member-photo">
+                <div class="member-info">
+                    <h3>Alex Chen</h3>
+                    <p>Founder & Lead Architect</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Priya Patel" class="member-photo">
+                <div class="member-info">
+                    <h3>Priya Patel</h3>
+                    <p>Head of AI Research</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Marcus Johnson" class="member-photo">
+                <div class="member-info">
+                    <h3>Marcus Johnson</h3>
+                    <p>Systems Engineer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <h2>Our <span>Journey</span></h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2023 Q1</div>
+                <div class="timeline-content">
+                    <h3>Project Conception</h3>
+                    <p>Initial research and prototype development began with seed funding from AI innovators.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2023 Q3</div>
+                <div class="timeline-content">
+                    <h3>Alpha Release</h3>
+                    <p>First private alpha released to 100 developers with groundbreaking voice interaction.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024 Q1</div>
+                <div class="timeline-content">
+                    <h3>Public Beta</h3>
+                    <p>Launched beta program with 10,000+ active testers across 42 countries.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024 Q4</div>
+                <div class="timeline-content">
+                    <h3>Coming Soon</h3>
+                    <p>Official v1.0 release with revolutionary agent marketplace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2>Our Core <span>Values</span></h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovation</h3>
+                <p>We challenge conventions and push boundaries to create truly novel computing experiences.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Privacy</h3>
+                <p>User data belongs to users. We minimize collection and maximize protection.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Openness</h3>
+                <p>We believe in transparent development and community collaboration.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+   <!-- Footer -->
+   <footer id="contact">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="assets/images/Untitled_design__4_-removebg-preview.png" width="200px" height="150px" alt="Clova AI OS">
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="quick-links-container">
+            <h3>Quick Links</h3>
+            <ul class="quick-links">
+                <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                <li><a href="help-center.html">Help Center</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>&copy; 2025 Clova AI OS. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Menu toggle script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const menuOverlay = document.createElement('div');
+        
+        // Create overlay element
+        menuOverlay.className = 'menu-overlay';
+        document.body.appendChild(menuOverlay);
+        
+        // Toggle menu function
+        function toggleMenu() {
+            navLinks.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+        
+        // Hamburger click event
+        hamburger.addEventListener('click', toggleMenu);
+        
+        // Overlay click event
+        menuOverlay.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    });
+</script>
+    <script src="script.js"></script>
+</body>
+</html>

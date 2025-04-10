@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | CLLOVA AI OS</title>
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #00aced;
+            --dark: #2c3e50;
+            --light-bg: #f8fafc;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            background: var(--light-bg);
+        }
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--dark);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            padding: 0 20px;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar li {
+            margin-bottom: 5px;
+        }
+        .sidebar a {
+            display: block;
+            color: #ddd;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        /* Documentation Sections */
+        .doc-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .doc-section.active {
+            display: block;
+        }
+        
+        /* API Endpoint Styling */
+        .api-endpoint {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .method-get { color: #61affe; }
+        .method-post { color: #49cc90; }
+        
+        /* Code Blocks */
+        pre {
+            background: #292d3e;
+            color: #a6accd;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="material-back-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="#6e48aa"/>
+        </svg>
+      </a>
+
+      <style>
+      .material-back-arrow {
+        position: fixed;
+        top: 10px;
+        left: 20px;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+        z-index: 1000;
+      }
+      
+      .material-back-arrow:hover {
+        background: #f5f5f5;
+        transform: translateX(-3px);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      }
+      </style>
+   
+
+
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>CLLOVA Docs</h2>
+        <ul>
+            <li><a href="#overview" class="active" onclick="showSection('overview')">Overview</a></li>
+            <li><a href="#quickstart" onclick="showSection('quickstart')">Quick Start</a></li>
+            <li><a href="#voice-api" onclick="showSection('voice-api')">Voice API</a></li>
+            <li><a href="#skills" onclick="showSection('skills')">Building Skills</a></li>
+            <li><a href="#troubleshooting" onclick="showSection('troubleshooting')">Troubleshooting</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Overview Section -->
+        <div id="overview" class="doc-section active">
+            <h1>CLLOVA AI OS Documentation</h1>
+            <p>Welcome to the official documentation for CLLOVA AI OS. This guide covers everything from installation to advanced skill development.</p>
+            
+            <h2>Key Features</h2>
+            <ul>
+                <li>Voice-first interface with 98.7% accuracy</li>
+                <li>Modular architecture for extensibility</li>
+                <li>Cross-platform support (Linux, Windows, macOS)</li>
+                <li>Privacy-focused design</li>
+            </ul>
+            
+            <div class="api-endpoint">
+                <h3>Getting Help</h3>
+                <p>Join our developer community:</p>
+                <pre><code># CLLOVA Developer Discord
+https://discord.gg/cllova-dev</code></pre>
+            </div>
+        </div>
+
+        <!-- Quick Start Section -->
+        <div id="quickstart" class="doc-section">
+            <h1>Quick Start Guide</h1>
+            <p>Get CLLOVA AI OS running in under 5 minutes.</p>
+            
+            <h2>System Requirements</h2>
+            <ul>
+                <li>Linux (Ubuntu 20.04+ recommended)</li>
+                <li>4GB RAM minimum</li>
+                <li>Python 3.8+</li>
+            </ul>
+            
+            <h2>Installation</h2>
+            <p>Run this one-line installer:</p>
+            <pre><code>curl -sSL https://install.cllova.ai | bash</code></pre>
+            
+            <h2>First Run</h2>
+            <pre><code>cllova setup  # Follow the interactive guide
+cllova start  # Launch the AI service</code></pre>
+        </div>
+
+        <!-- Voice API Section -->
+        <div id="voice-api" class="doc-section">
+            <h1>Voice API Reference</h1>
+            <p>Programmatically interact with CLLOVA's voice interface.</p>
+            
+            <div class="api-endpoint">
+                <h3 class="method-post">POST /api/voice-command</h3>
+                <p>Submit audio for processing:</p>
+                <pre><code>{
+  "audio": "base64_encoded_wav",
+  "language": "en-US",
+  "device_id": "optional_device_identifier"
+}</code></pre>
+                <p><strong>Response:</strong></p>
+                <pre><code>{
+  "text": "transcribed_command",
+  "intent": "play_music",
+  "confidence": 0.92
+}</code></pre>
+            </div>
+            
+            <div class="api-endpoint">
+                <h3 class="method-get">GET /api/voice-synthesis</h3>
+                <p>Generate speech from text:</p>
+                <pre><code>/api/voice-synthesis?text=Hello+World&voice=female-02</code></pre>
+            </div>
+        </div>
+
+        <!-- Building Skills Section -->
+        <div id="skills" class="doc-section">
+            <h1>Building Custom Skills</h1>
+            <p>Extend CLLOVA's capabilities with your own modules.</p>
+            
+            <h2>Skill Structure</h2>
+            <pre><code>my_skill/
+├── __init__.py
+├── manifest.json
+└── skill.py</code></pre>
+            
+            <h2>Example Skill (Python)</h2>
+            <pre><code>from cllova.sdk import Skill, intent
+
+class JokeSkill(Skill):
+    def initialize(self):
+        self.register_intent("tell_joke", self.handle_joke)
+    
+    @intent("tell_joke")
+    def handle_joke(self):
+        jokes = ["Why don't scientists trust atoms? Because they make up everything!"]
+        return {
+            "response": random.choice(jokes),
+            "ui": {"type": "text", "content": "😂"}
+        }</code></pre>
+            
+            <h2>Deploying Skills</h2>
+            <pre><code>cllova skills install ./my_skill
+cllova skills list  # Verify installation</code></pre>
+        </div>
+
+        <!-- Troubleshooting Section -->
+        <div id="troubleshooting" class="doc-section">
+            <h1>Troubleshooting Guide</h1>
+            
+            <h2>Common Issues</h2>
+            <div class="api-endpoint">
+                <h3>Microphone Not Detected</h3>
+                <p><strong>Solution:</strong></p>
+                <pre><code># List audio devices
+arecord -l
+
+# Set default device in config
+echo "default_mic = hw:1,0" >> ~/.cllova/config.ini</code></pre>
+            </div>
+            
+            <div class="api-endpoint">
+                <h3>Skills Not Loading</h3>
+                <p><strong>Debug steps:</strong></p>
+                <pre><code>cllova skills --verbose
+journalctl -u cllova -f  # View live logs</code></pre>
+            </div>
+            
+            <h2>Getting Support</h2>
+            <p>For urgent issues, contact <a href="mailto:support@cllova.ai">support@cllova.ai</a> with your logs:</p>
+            <pre><code>cllova diagnostics > diagnostics.txt</code></pre>
+        </div>
+    </div>
+
+    <script>
+        // Show the selected section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.doc-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('.sidebar a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Optional: Handle URL hashes on page load
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                showSection(sectionId);
+            }
+        });
+    </script>
+</body>
+</html>

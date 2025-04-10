@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clova AI OS - The Future of AI-Powered Operating Systems</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #111;
+                z-index: 99;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                padding: 10px;
+            }
+
+            .hamburger {
+                display: block !important;
+                cursor: pointer;
+            }
+        }
+        
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .ai-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2.3rem;
+            color: #000;
+            position: relative;
+        }
+        
+        .ai-logo::after {
+            content: "CLLOVA";
+            background: linear-gradient(90deg, #FF3E9D, #0E1F5C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-left: 8px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #6e48aa;
+        }
+        
+        .nav-links a.active {
+            color: #6e48aa;
+            font-weight: bold;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Video Demo Section */
+        .video-demo {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .video-container {
+            text-align: center;
+        }
+        
+        .video-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .video-container h2 span {
+            color: #6e48aa;
+        }
+        
+        .video-container video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-caption {
+            margin-top: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .video-caption p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #6e48aa, #9c50e6);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: #6e48aa;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #9c50e6;
+        }
+        
+        footer p {
+            color: #666;
+            margin-top: 1rem;
+        }
+        
+        /* Quick Links */
+        .quick-links-container {
+            background-color: #6e48aa;
+            padding: 20px;
+            color: white;
+            font-family: Arial, sans-serif;
+            width: 100%;
+        }
+        
+        .quick-links-container h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .quick-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        
+        .quick-links li {
+            flex: 1 0 auto;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .quick-links a {
+            color: #aaa;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        .quick-links a:hover {
+            color: #00aced;
+            text-decoration: underline;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+                z-index: 999;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+        
+            .nav-links.active {
+                left: 0;
+            }
+        
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+        
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+        
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 998;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s, visibility 0.3s;
+            }
+        
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .video-container h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .ai-logo {
+                font-size: 1.8rem;
+            }
+            
+            .video-demo {
+                padding: 2rem 1rem;
+            }
+            
+            .video-container h2 {
+                font-size: 1.8rem;
+            }
+            
+            .quick-links li {
+                min-width: 100%;
+            }
+        }
+        
+        /* Utility Classes */
+        .no-scroll {
+            overflow: hidden;
+        }
+    
+    </style>
+</head>
+<body>
+   
+
+    <!-- Navigation Bar -->
+    <nav style="display: flex; align-items: center; justify-content: space-between; position: relative; padding: 10px;">
+        <div class="logo">
+            <h1 class="ai-logo">
+                <span class="clova"></span> 
+                <span class="ai"></span>
+              </h1>
+              
+              <style>
+               .ai-logo {
+  font-family: 'Space Grotesk', sans-serif; /* Techy but readable */
+  font-weight: 700;
+  font-size: 2.3rem;
+  color: #000;
+  position: relative;
+}
+
+.ai-logo::after {
+  content: "CLLOVA";
+  background: linear-gradient(90deg, #FF3E9D, #0E1F5C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+
+
+              </style>
+             
+
+           
+              
+        </div>
+        <ul class="nav-links" id="nav-menu" style="display: flex; list-style: none; margin: 0; padding: 0;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="feature.html">Features</a></li>
+            <li><a href="demo.html">Demo</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger-menu" style="display: none; font-size: 1.5rem;">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>The Future of <span class="ai-gradient">AI-Powered</span> Operating Systems</h1>
+            <p>Clova is a Linux-based OS with an AI-first interface, designed for seamless automation and productivity.</p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="location.href='contact.html#waitlist'">Download Alpha</button>
+                <button class="btn-secondary">View GitHub</button>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-ai"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Why Choose <span>Clova AI OS?</span></h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI-First Interface</h3>
+                <p>Control your OS with voice, text, or gestures.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-lock"></i>
+                <h3>Privacy Focused</h3>
+                <p>Local AI processing with optional cloud sync.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Modular Design</h3>
+                <p>Add or remove AI modules as needed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive AI Demo -->
+    <section id="demo" class="ai-demo">
+        <h2>Try Clova AI <span>Live Demo</span></h2>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Clova Assistant</h3>
+            </div>
+            <div class="chatbot-messages" id="chat-messages">
+                <div class="message bot-message">
+                    <p>Hello! I'm Clova, your AI assistant. How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="user-input" placeholder="Ask me anything...">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </section>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="Eqi6ncSPlt6n6Thj0RQ-3";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/images/Untitled_design__4_-removebg-preview.png" width="200px" height="150px" alt="Clova AI OS">
+                <span></span>
+            </div>
+            <!--footter new -->
+            <div style="background-color:#6e48aa ; padding: 20px; color: white; font-family: Arial, sans-serif;">
+                <h3 style="margin-bottom: 10px;">Quick Links</h3>
+                <ul style="list-style: none; padding: 0; display: flex; gap: 15px; flex-wrap: wrap;">
+                  <li>
+                    <a href="privacypolicy.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="help-center.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Help Center</a>
+                  </li>
+                  <li>
+                    <a href="documentation.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Documentation</a>
+                  </li>
+                  <li>
+                    <a href="blogs.html" style="color: #aaa; text-decoration: none;" onmouseover="highlightLink(this)" onmouseout="resetLink(this)">Blogs</a>
+                  </li>
+                </ul>
+              
+                <script>
+                  function highlightLink(link) {
+                    link.style.color = "#00aced";
+                    link.style.textDecoration = "underline";
+                  }
+                  function resetLink(link) {
+                    link.style.color = "#aaa";
+                    link.style.textDecoration = "none";
+                  }
+                </script>
+              </div>
+        </div>
+
+
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div></div><br>
+        <p>&copy; 2025 Clova AI OS. All rights reserved.</p>
+    </div>
+    </footer>
+
+    <!-- Menu toggle script -->
+    <script>
+        document.getElementById("hamburger-menu").addEventListener("click", function () {
+            var navMenu = document.getElementById("nav-menu");
+            if (navMenu.style.display === "flex") {
+                navMenu.style.display = "none";
+            } else {
+                navMenu.style.display = "flex";
+                if (window.innerWidth <= 768) {
+                    navMenu.style.flexDirection = "column";
+                }
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

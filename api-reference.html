@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference | CLLOVA AI OS</title>
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #00aced;
+            --dark: #2c3e50;
+            --light-bg: #f8fafc;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), #9d50bb);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .api-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .endpoint {
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            margin: 25px 0;
+        }
+        .method {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-family: monospace;
+            margin-right: 10px;
+        }
+        .method-get { background: #e6f7ff; color: #61affe; }
+        .method-post { background: #e6ffed; color: #49cc90; }
+        .method-put { background: #fff7e6; color: #fca130; }
+        .method-delete { background: #ffefe6; color: #f93e3e; }
+        pre {
+            background: #292d3e;
+            color: #a6accd;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+        }
+        .try-it {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #eee;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab.active {
+            background: white;
+            border-bottom: 2px solid var(--primary);
+        }
+        .response-area {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 100px;
+            margin-top: 20px;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+        }
+ /* Google-style Back Button */
+ .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-button svg {
+            width: 24px;
+            height: 24px;
+        }
+        .back-button:hover {
+            background: #f5f5f5;
+            transform: translateX(-3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+
+        .back-button {
+                top: 10px;
+                left: 10px;
+            }
+    </style>
+</head>
+<body>
+     <!-- Google-style Back Button -->
+     <a href="index.html" class="back-button" aria-label="Return to homepage">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="#6e48aa"/>
+        </svg>
+    </a>
+    <header>
+        <h1>
+            <a href="help-center.html" style="text-decoration: none;">API Reference</a>
+          </h1>
+        <p>Version 2.4 | Base URL: <code>https://api.cllova.ai/v1</code></p>
+    </header>
+
+    <div class="container">
+        <!-- Authentication -->
+        <div class="api-section">
+            <h2>Authentication</h2>
+            <p>All API requests require an API key in the header:</p>
+            <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+            <p>Get your key from the <a href="#">developer dashboard</a>.</p>
+        </div>
+
+        <!-- Voice API -->
+        <div class="api-section">
+            <h2>Voice Processing</h2>
+            
+            <div class="endpoint">
+                <div class="method method-post">POST</div>
+                <span class="url">/voice/process</span>
+                <p>Process audio input into text commands</p>
+                
+                <h3>Request</h3>
+                <pre><code>{
+  "audio": "base64_encoded_audio",
+  "language": "en-US",
+  "format": "wav|mp3",
+  "enhance": true
+}</code></pre>
+                
+                <h3>Response</h3>
+                <pre><code>{
+  "success": true,
+  "text": "play jazz music",
+  "intents": [
+    {
+      "intent": "play_music",
+      "confidence": 0.97,
+      "parameters": {
+        "genre": "jazz"
+      }
+    }
+  ]
+}</code></pre>
+                
+                <button class="try-it" onclick="showResponse('voice-response')">Try it with sample audio</button>
+                <div id="voice-response" class="response-area"></div>
+            </div>
+        </div>
+
+        <!-- Skill Management -->
+        <div class="api-section">
+            <h2>Skill Management</h2>
+            
+            <div class="endpoint">
+                <div class="method method-get">GET</div>
+                <span class="url">/skills</span>
+                <p>List installed skills</p>
+                
+                <h3>Example Response</h3>
+                <pre><code>{
+  "skills": [
+    {
+      "id": "weather_001",
+      "name": "Weather Lookup",
+      "version": "1.2",
+      "author": "CLLOVA Team"
+    },
+    {
+      "id": "calendar_002",
+      "name": "Calendar Manager",
+      "version": "2.1",
+      "author": "Third Party"
+    }
+  ]
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <div class="method method-post">POST</div>
+                <span class="url">/skills/install</span>
+                <p>Install a new skill from package</p>
+                
+                <h3>Request</h3>
+                <pre><code>{
+  "package_url": "https://example.com/skill.zip",
+  "verify_signature": true
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- Device Control -->
+        <div class="api-section">
+            <h2>Device Control</h2>
+            
+            <div class="endpoint">
+                <div class="method method-post">POST</div>
+                <span class="url">/device/execute</span>
+                <p>Send commands to connected IoT devices</p>
+                
+                <h3>Request</h3>
+                <pre><code>{
+  "device_id": "living_room_light",
+  "command": "set_state",
+  "parameters": {
+    "power": "on",
+    "brightness": 80,
+    "color": "#6e48aa"
+  }
+}</code></pre>
+                
+                <h3>Response</h3>
+                <pre><code>{
+  "success": true,
+  "new_state": {
+    "power": "on",
+    "brightness": 80,
+    "color": "#6e48aa"
+  }
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- Error Codes -->
+        <div class="api-section">
+            <h2>Error Codes</h2>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background: var(--primary); color: white;">
+                    <th style="padding: 10px; text-align: left;">Code</th>
+                    <th style="padding: 10px; text-align: left;">Meaning</th>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">400</td>
+                    <td style="padding: 10px;">Invalid request format</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">401</td>
+                    <td style="padding: 10px;">Unauthorized (invalid API key)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">429</td>
+                    <td style="padding: 10px;">Rate limit exceeded</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">500</td>
+                    <td style="padding: 10px;">Internal server error</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Demo functionality
+        function showResponse(elementId) {
+            const responseArea = document.getElementById(elementId);
+            responseArea.style.display = 'block';
+            responseArea.innerHTML = `
+                <h4>Sample Response</h4>
+                <pre><code>{
+  "success": true,
+  "text": "What's the weather tomorrow?",
+  "intents": [
+    {
+      "intent": "check_weather",
+      "confidence": 0.95,
+      "parameters": {
+        "time": "tomorrow"
+      }
+    }
+  ]
+}</code></pre>
+                <p><em>Note: This is a simulated response. Actual API calls require authentication.</em></p>
+            `;
+        }
+    </script>
+</body>
+</html>
